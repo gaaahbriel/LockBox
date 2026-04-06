@@ -53,11 +53,6 @@
                             <input type="email" name="email_confirmacao" id="email_confirmacao" 
                             class="input input-bordered w-full max-w-xs bg-white border-gray-300"
                             value="<?= old('email_confirmacao') ?>"/>
-                            <?php if (isset($validacoes['email_confirmacao'])): ?>
-                                <div class="label text-error text-xs">
-                                    <?= $validacoes['email_confirmacao'][0] ?>
-                                </div>
-                            <?php endif; ?>
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
