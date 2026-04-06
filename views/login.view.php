@@ -14,7 +14,7 @@
         <div class="hero-content -mt-20">
             <form action="/login" method="post">
                 <?php
-                $validacoes = flash()->get('validacoes');
+                    $validacoes = flash()->get('validacoes');
                 ?>
                 <div class="card">
                     <div class="card-body">

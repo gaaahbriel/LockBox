@@ -20,10 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         params: compact('email')
     )->fetch();
 
+
     if ($usuario && password_verify($_POST['senha'], $usuario->senha)) {
         $_SESSION['auth'] = $usuario;
         flash()->push('mensagem', 'seja bem vindo, ' . $usuario->nome . '!');
-        header('location: /');
+        header('location: /dashboard');
         exit();
         } else {
             flash()->push('validacoes', ['email' => ['Usuário ou senha estão incorretos!']]);
