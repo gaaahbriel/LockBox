@@ -20,25 +20,25 @@
                             <div class="label">
                                 <span class="label-text">Nome</span>
                             </div>
-                            <input type="text" name="nome" id="nome" class="input input-bordered w-full max-w-xs bg-white">
+                            <input type="text" name="nome" id="nome" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
                                 <span class="label-text">Email</span>
                             </div>
-                            <input type="text" name="email" id="email" class="input input-bordered w-full max-w-xs bg-white">
+                            <input type="text" name="email" id="email" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
                                 <span class="label-text">Confirme seu email</span>
                             </div>
-                            <input type="text" name="confirmar_email" id="confirmar_email" class="input input-bordered w-full max-w-xs bg-white">
+                            <input type="text" name="email_confirmacao" id="email_confirmacao" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
                                 <span class="label-text">Senha</span>
                             </div>
-                            <input type="password" name="senha" id="senha" class="input input-bordered w-full max-w-xs bg-white">
+                            <input type="password" name="senha" id="senha" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
                         </label>
                         <div class="card-actions">
                             <button class="btn btn-primary btn-block">Registrar</button>
