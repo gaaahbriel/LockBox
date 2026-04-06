@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ], $_POST);
 
     if ($validacao->naoPassou()) {
-        header('location: /login');
+        view('login');
         exit();
     }
 
@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('location: /login');
             exit();
         }
-
 
         $_SESSION['auth'] = $usuario;
         flash()->push('mensagem', 'seja bem vindo, ' . $usuario->nome . '!');

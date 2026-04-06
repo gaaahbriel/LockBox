@@ -13,6 +13,9 @@
     <div class="bg-white hero mr-40 min-h-screen text-black">
         <div class="hero-content -mt-20">
             <form action="/registrar" method="post">
+                <?php 
+                    $validacoes = flash()->get('validacoes');
+                ?>
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">Crie a sua conta</div>
@@ -20,25 +23,52 @@
                             <div class="label">
                                 <span class="label-text">Nome</span>
                             </div>
-                            <input type="text" name="nome" id="nome" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
+                            <input type="text" name="nome" id="nome" 
+                            class="input input-bordered w-full max-w-xs bg-white border-gray-300"
+                            
+                            value="<?= old('nome') ?>"/>
+                            <?php if (isset($validacoes['nome'])): ?>
+                                <div class="label text-error text-xs">
+                                    <?= $validacoes['nome'][0] ?>
+                                </div>
+                            <?php endif; ?>
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
                                 <span class="label-text">Email</span>
                             </div>
-                            <input type="text" name="email" id="email" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
+                            <input type="text" name="email" id="email" 
+                            class="input input-bordered w-full max-w-xs bg-white border-gray-300"
+                            value="<?= old('email') ?>"/>
+                            <?php if (isset($validacoes['email'])): ?>
+                                <div class="label text-error text-xs">
+                                    <?= $validacoes['email'][0] ?>
+                                </div>
+                            <?php endif; ?>
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
                                 <span class="label-text">Confirme seu email</span>
                             </div>
-                            <input type="text" name="email_confirmacao" id="email_confirmacao" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
+                            <input type="email" name="email_confirmacao" id="email_confirmacao" 
+                            class="input input-bordered w-full max-w-xs bg-white border-gray-300"
+                            value="<?= old('email_confirmacao') ?>"/>
+                            <?php if (isset($validacoes['email_confirmacao'])): ?>
+                                <div class="label text-error text-xs">
+                                    <?= $validacoes['email_confirmacao'][0] ?>
+                                </div>
+                            <?php endif; ?>
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
                                 <span class="label-text">Senha</span>
                             </div>
                             <input type="password" name="senha" id="senha" class="input input-bordered w-full max-w-xs bg-white border-gray-300">
+                            <?php if (isset($validacoes['senha'])): ?>
+                                <div class="label text-error text-xs">
+                                    <?= $validacoes['senha'][0] ?>
+                                </div>
+                            <?php endif; ?>
                         </label>
                         <div class="card-actions">
                             <button class="btn btn-primary btn-block">Registrar</button>

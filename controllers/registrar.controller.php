@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'senha' => ['required', 'min:8', 'max:30', 'strong']
     ], $_POST);
 
-    if ($validacao->naoPassou('registrar')) {
-        header('location: /registrar');
+    if ($validacao->naoPassou()) {
+        view('registrar');
         exit();
     }
 
