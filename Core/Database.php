@@ -14,7 +14,7 @@ class Database
         $dsn = $driver . ":" . http_build_query($config, '', ';');
         
 
-        $this->db = new \PDO($dsn);
+        $this->db = new PDO($dsn);
     }
 
     public function query($query, $class = null, $params = []){
