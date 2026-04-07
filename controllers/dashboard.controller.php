@@ -5,4 +5,4 @@ if(!auth()){
     exit();
 }
 
-echo 'estou logado com o usuário'.auth()->nome;
+echo 'estou logado com o usuário '.auth()->nome;

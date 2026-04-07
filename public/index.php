@@ -1,10 +1,11 @@
 <?php
-    require '../models/Usuario.php';
+    
+    require '../Core/functions.php';
+
+    spl_autoload_register(function ($class) {
+        require base_path("{$class}.php");
+    });
 
     session_start();
-
-    require '../functions.php';
-    require '../Flash.php';
-    require '../Database.php';
-    require '../Validacao.php';
+    
     require '../routes.php';

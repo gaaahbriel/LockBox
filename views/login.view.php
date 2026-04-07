@@ -31,7 +31,7 @@
                             <div class="label">
                                 <span class="label-text">Email</span>
                             </div>
-                            <input type="text" name="email" id="email"
+                            <input type="text" name="email"
                                 class="input input-bordered w-full max-w-xs bg-white border-gray-300"
                                 value="<?= old('email') ?>" />
                             <?php if (isset($validacoes['email'])): ?>
@@ -44,7 +44,7 @@
                             <div class="label">
                                 <span class="label-text">Senha</span>
                             </div>
-                            <input type="password" name="senha" id="senha"
+                            <input type="password" name="senha"
                                 class="input input-bordered w-full max-w-xs bg-white border-gray-300" />
                             <?php if (isset($validacoes['senha'])): ?>
                                 <div class="label text-error text-xs">

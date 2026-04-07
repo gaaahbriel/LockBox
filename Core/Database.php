@@ -1,4 +1,8 @@
 <?php
+
+namespace Core;
+use PDO;
+
 class Database
 {
     private $db;
@@ -10,7 +14,7 @@ class Database
         $dsn = $driver . ":" . http_build_query($config, '', ';');
         
 
-        $this->db = new PDO($dsn);
+        $this->db = new \PDO($dsn);
     }
 
     public function query($query, $class = null, $params = []){
@@ -24,5 +28,3 @@ class Database
         return $prepare;
     }
 }
-
-$database = new Database(config('database'));
