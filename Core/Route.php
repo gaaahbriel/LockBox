@@ -48,6 +48,7 @@
             $class = $routeinfo['class'];
             $method = $routeinfo['method'];
 
+
             $c = new $class;
             $c->$method();
         }

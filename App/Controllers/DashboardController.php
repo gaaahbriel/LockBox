@@ -1,10 +1,17 @@
 <?php
 
-    namespace App\Controllers;
+namespace App\Controllers;
 
-    class DashboardController{
+class DashboardController
+{
 
-        public function __invoke(){
-            return view('dashboard');
+    public function __invoke()
+    {
+
+        if (!auth()) {
+            return redirect('/login');
         }
+
+        echo 'estou logado com o usuário ' . auth()->nome;
     }
+}
