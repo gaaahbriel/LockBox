@@ -3,6 +3,9 @@
 use Core\Route;
 use App\Controllers\IndexController;
 use App\Controllers\LoginController;
+use App\Controllers\DashboardController;
+use App\Controllers\LogoutController;
+use App\Controllers\RegisterController;
 
 
 (new Route())
@@ -12,13 +15,13 @@ use App\Controllers\LoginController;
 ->get('/login', [LoginController::class, 'index'])
 ->post('/login', [LoginController::class, 'login'])
 
+->get('/dashboard', DashboardController::class)
+
+->get('/logout', LogoutController::class)
+
+->get('/register', [RegisterController::class, 'index'])
+->post('/register', [RegisterController::class, 'register'])
+
+
+
 ->run();
-
-$controller = str_replace('/', '', parse_url($_SERVER['REQUEST_URI'])['path']);
-if (!$controller) $controller = 'index';
-
-if (!file_exists("../controllers/{$controller}.controller.php")) {
-    echo "página não existe";
-};
-
-require "../controllers/{$controller}.controller.php";
