@@ -12,6 +12,8 @@ class DashboardController
             return redirect('/login');
         }
 
-        echo 'estou logado com o usuário ' . auth()->nome;
+        return view('dashboard', [
+            'user' => auth()
+        ]);
     }
 }
