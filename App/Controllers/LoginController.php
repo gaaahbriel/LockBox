@@ -37,13 +37,13 @@ class LoginController
         )->fetch();
 
 
-        if (!$usuario && password_verify($_POST['senha'], $usuario->senha)) {
+        if (!$usuario && !password_verify($_POST['senha'], $usuario->senha)) {
             flash()->push('validacoes', ['email' => ['Usuário ou senha estão incorretos!']]);
             return view('login');
         }
 
         $_SESSION['auth'] = $usuario;
-        flash()->push('mensagem', 'seja bem vindo, ' . $usuario->nome . '!');
+        flash()->push('sucesso', 'seja bem vindo, ' . $usuario->nome . '!');
         return redirect('/dashboard');
     }
 }
