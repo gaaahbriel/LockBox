@@ -22,6 +22,4 @@ use App\Controllers\RegisterController;
 ->get('/registrar', [RegisterController::class, 'index'])
 ->post('/registrar', [RegisterController::class, 'register'])
 
-
-
 ->run();
