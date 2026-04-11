@@ -44,6 +44,6 @@ class LoginController
 
         $_SESSION['auth'] = $usuario;
         flash()->push('sucesso', 'seja bem vindo, ' . $usuario->nome . '!');
-        return redirect('/dashboard');
+        return redirect('/notas');
     }
 }
