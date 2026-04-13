@@ -14,8 +14,10 @@
 <body>
     <div class="mx-auto max-w-screen-lg h-screen flex flex-col">
 
+        <?php if(auth()): ?>
         <?php require base_path("views/partials/_navbar.view.php"); ?>
         <?php require base_path("views/partials/_pesquisar.view.php"); ?>
+        <?php endif; ?>
 
         <?php if ($sucesso = flash()->get('sucesso')): ?>
             <div class="alert alert-success mt-2">
