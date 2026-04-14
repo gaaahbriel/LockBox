@@ -1,11 +1,9 @@
         <div class="bg-base-300 rounded-l-box w-56 flex flex-col">
-            <div>
                 <?php foreach($notas as $nota): ?>
                     <a href="">
                         <?= $nota->titulo ?>
                     </a>
                 <?php endforeach;?>
-            </div>
         </div>
 
         <div class="bg-base-200 rounded-r-box w-full p-10 flex flex-col space-y-6">
