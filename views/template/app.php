@@ -17,6 +17,7 @@
         <?php if(auth()): ?>
         <?php require base_path("views/partials/_navbar.view.php"); ?>
         <?php require base_path("views/partials/_pesquisar.view.php"); ?>
+        <?php require base_path('views/partials/_mensagem.view.php'); ?>
         <?php endif; ?>
 
         <?php if ($sucesso = flash()->get('sucesso')): ?>
@@ -28,7 +29,7 @@
             </div>
         <?php endif; ?>
 
-        <div class="flex flex-grow py-6">
+        <div class="flex flex-grow py-4">
             <?php require base_path("views/{$view}.view.php"); ?>
         </div>
     </div>

@@ -1,5 +1,11 @@
-        <div class="bg-base-300 rounded-l-box w-56">
-
+        <div class="bg-base-300 rounded-l-box w-56 flex flex-col">
+            <div>
+                <?php foreach($notas as $nota): ?>
+                    <a href="">
+                        <?= $nota->titulo ?>
+                    </a>
+                <?php endforeach;?>
+            </div>
         </div>
 
         <div class="bg-base-200 rounded-r-box w-full p-10 flex flex-col space-y-6">
@@ -16,7 +22,7 @@
                 </div>
                 <textarea class="textarea textarea-bordered h-24 w-full" placeholder="Bio"></textarea>
             </label>
-            
+
             <div class="flex justify-between items-center">
                 <button class="btn btn-error">DELETAR</button>
                 <button class="btn btn-primary">ATUALIZAR</button>
