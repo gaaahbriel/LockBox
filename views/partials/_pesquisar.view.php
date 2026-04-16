@@ -2,7 +2,7 @@
     <form action="/notas" class="w-full">
         <label class="input input-bordered flex items-center gap-2 w-full">
             <input type="text" class="grow" name="pesquisar" placeholder="Pesquisar notas no lock box" 
-            value="<?= isset($_GET['pesquisar']) ? $_GET['pesquisar'] : '' ?>"/>
+            value="<?= request()->get('pesquisar') ?>"/>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
