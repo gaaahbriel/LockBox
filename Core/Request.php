@@ -3,13 +3,10 @@
 namespace Core;
 
 class Request{
-    public static function get($key, $default= null)
+    public function get($key, $default= null, $prefix = null)
     {
-        return isset($_GET[$key]) ? $_GET[$key] : $default;
-    }
-
-    public static function getNotas($key, $default= null)
-    {
-        return isset($_GET[$key]) ? " &{$key} " . $_GET[$key] : $default;
+        return isset($_GET[$key])
+        ? ($prefix ?: null) .
+        $_GET[$key] : $default;
     }
 }
