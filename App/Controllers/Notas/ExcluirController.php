@@ -3,20 +3,22 @@
 namespace App\Controllers\Notas;
 
 use Core\Database;
+use Core\Validacao;
+use App\Models\Nota;
 
 class ExcluirController
 {
     public function __invoke()
     {
-        $db = new Database(config('database'));
+        $validacao = Validacao::validar([
+            'id' => ['required']
+        ], request()->all());
 
-        $db->query(
-            "DELETE FROM notas WHERE id = :id AND usuario_id = :usuario_id",
-            params: [
-                'id' => request()->post('id'),
-                'usuario_id' => auth()->id
-            ]
-        );
+        if ($validacao->naoPassou()) {
+            return redirect('notas');
+        }
+
+        Nota::delete(request()->post('id'));
 
         flash()->push('mensagem', 'Nota excluída com sucesso!');
 

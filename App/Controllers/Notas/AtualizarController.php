@@ -22,17 +22,10 @@ class AtualizarController
             return redirect('notas?id='. request()->post('id'));
         }
 
-        $db = new Database(config('database'));
-
-        $db->query(
-            "UPDATE notas SET titulo = :titulo, nota = :nota, data_atualizacao = NOW() WHERE id = :id AND usuario_id = :usuario_id",
-            class: Nota::class,
-            params: [
-                'id' => request()->post('id'),
-                'usuario_id' => auth()->id,
-                'titulo' => request()->post('titulo'),
-                'nota' => request()->post('nota')
-            ]
+        Nota::update(
+            request()->post('id'),
+            request()->post('titulo'),
+            request()->post('nota')
         );
 
         flash()->push('mensagem', 'Nota atualizada com sucesso!');
