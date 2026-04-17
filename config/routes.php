@@ -26,6 +26,9 @@ use App\Middlewares\AuthMiddleware;
 ->get('/notas/criar', [Notas\CriarController::class, 'index'], AuthMiddleware::class)
 ->post('/notas/criar', [Notas\CriarController::class, 'store'], AuthMiddleware::class)
 
+->put('/nota', Notas\AtualizarController::class, AuthMiddleware::class)
+->delete('/nota', Notas\ExcluirController::class, AuthMiddleware::class)
+
 ->get('/logout', LogoutController::class, AuthMiddleware::class)
 
 
