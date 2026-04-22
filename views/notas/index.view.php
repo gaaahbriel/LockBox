@@ -33,7 +33,9 @@
                     <div class="label">
                         <span class="label-text">Sua nota</span>
                     </div>
-                    <textarea name="nota" class="textarea textarea-bordered h-24 w-full"><?= $notaSelecionada->nota ?></textarea>
+                    <textarea
+                    <?php if(!session()->get('mostrar')): ?>disabled<?php endif; ?>
+                    name="nota" class="textarea textarea-bordered h-24 w-full"><?= $notaSelecionada->nota() ?></textarea>
                     <?php if (isset($validacoes['nota'])): ?>
                         <div class="label text-error text-xs">
                             <?= $validacoes['nota'][0] ?>
