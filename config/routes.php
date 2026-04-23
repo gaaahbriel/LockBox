@@ -31,8 +31,11 @@ use App\Middlewares\AuthMiddleware;
 
 ->get('/logout', LogoutController::class, AuthMiddleware::class)
 
-->get('/mostrar', [Notas\VisualizarController::class, 'mostrar'], AuthMiddleware::class)
+->get('/confirmar', [Notas\VisualizarController::class, 'confirmar'], AuthMiddleware::class)
+->post('/mostrar', [Notas\VisualizarController::class, 'mostrar'], AuthMiddleware::class)
 ->get('/esconder', [Notas\VisualizarController::class, 'esconder'], AuthMiddleware::class)
+
+
 
 
 

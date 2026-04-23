@@ -9,7 +9,7 @@
                         😑
                     </a></li>
             <?php else: ?>
-                <li><a href="/mostrar">
+                <li><a href="/confirmar">
                         👁️
                     </a></li>
             <?php endif; ?>
