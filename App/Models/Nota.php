@@ -16,8 +16,8 @@ class Nota
 
     public function nota()
     {
-        if(session()->get('mostrar')) {
-            return $this->nota;
+        if (session()->get('mostrar')) {
+            return decrypt($this->nota);
         }
 
         return str_repeat('*', strlen($this->nota));
@@ -36,6 +36,20 @@ class Nota
         )->fetchAll();
     }
 
+    public static function create($data)
+    {
+        $database = new Database(config('database'));
+
+        $database->query(
+            query: "INSERT INTO notas (usuario_id, titulo, nota, data_criacao, data_atualizacao)
+            VALUES (:usuario_id, :titulo, :nota, :data_criacao, :data_atualizacao)",
+            params: array_merge($data, [
+                'data_criacao' => date('Y-m-d H:i:s'),
+                'data_atualizacao' => date('Y-m-d H:i:s')
+            ])
+        );
+    }
+
     public static function delete($id)
     {
         $db = new Database(config('database'));
@@ -48,14 +62,13 @@ class Nota
         );
     }
 
-
     public static function update($id, $titulo, $nota)
     {
         $db = new Database(config('database'));
 
         $set = "titulo = :titulo";
 
-        if($nota) {
+        if ($nota) {
             $set .= ", nota = :nota";
         }
 
@@ -65,7 +78,7 @@ class Nota
             params: array_merge([
                 'id' => $id,
                 'titulo' => $titulo,
-            ], $nota ? ['nota' => $nota] : [])
+            ], $nota ? ['nota' => encrypt($nota)] : [])
         );
     }
 }
