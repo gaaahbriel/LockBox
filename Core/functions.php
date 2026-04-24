@@ -1,12 +1,17 @@
 <?php
+
+use Core\Flash;
+use Core\Request;
+use Core\Session;
+
 function base_path($path)
 {
-    return __DIR__ . '/../' . $path;
+    return __DIR__.'/../'.$path;
 }
 
 function redirect($uri)
 {
-    return header('Location:' . $uri);
+    return header('Location:'.$uri);
 }
 
 function view($view, $data = [], $template = 'app')
@@ -23,7 +28,7 @@ function dd(...$dump)
     echo '<pre>';
     var_dump($dump);
     echo '</pre>';
-    die();
+    exit();
 }
 
 function dump(...$dump)
@@ -37,12 +42,12 @@ function abort($code)
 {
     http_response_code($code);
     view(404);
-    die();
+    exit();
 }
 
 function flash()
 {
-    return new Core\Flash;
+    return new Flash;
 }
 
 function config($chave = null)
@@ -51,10 +56,10 @@ function config($chave = null)
 
     if (strlen($chave) > 0) {
         $tmp = null;
-        foreach(explode('.', $chave) as $index => $key){
-            $tmp =  $index == 0 ? $config[$key] : $tmp[$key];
+        foreach (explode('.', $chave) as $index => $key) {
+            $tmp = $index == 0 ? $config[$key] : $tmp[$key];
         }
-        
+
         return $tmp;
     }
 
@@ -63,9 +68,10 @@ function config($chave = null)
 
 function auth()
 {
-    if (!isset($_SESSION['auth'])) {
+    if (! isset($_SESSION['auth'])) {
         return null;
     }
+
     return $_SESSION['auth'];
 }
 
@@ -81,12 +87,12 @@ function old($campo)
 
 function request()
 {
-    return new Core\Request;
+    return new Request;
 }
 
 function session()
 {
-    return new Core\Session;
+    return new Session;
 }
 
 function encrypt($data)
@@ -101,7 +107,8 @@ function encrypt($data)
     $first_encrypted = openssl_encrypt($data, $method, $first_key, OPENSSL_RAW_DATA, $iv);
     $second_encryped = hash_hmac('sha3-512', $first_encrypted, $second_key, true);
 
-    $output = base64_encode($iv . $second_encryped . $first_encrypted);
+    $output = base64_encode($iv.$second_encryped.$first_encrypted);
+
     return $output;
 }
 
@@ -128,10 +135,9 @@ function decrypt($input)
     return false;
 }
 
-
-function env($key, $default = null){
+function env($key, $default = null)
+{
     $env = parse_ini_file(base_path('.env'));
-
 
     return isset($env[$key]) ? $env[$key] : $default;
 }

@@ -15,14 +15,12 @@ class Validacao
                 $valorDoCampo = $dados[$campo];
                 if ($regra == 'confirmed') {
                     $validacao->$regra($campo, $valorDoCampo, $dados["{$campo}_confirmacao"]);
-                }elseif(str_contains($regra, ':')){
+                } elseif (str_contains($regra, ':')) {
                     $temp = explode(':', $regra);
                     $regra = $temp[0];
                     $regraAr = $temp[1];
                     $validacao->$regra($regraAr, $campo, $valorDoCampo);
-                }
-                
-                else {
+                } else {
                     $validacao->$regra($campo, $valorDoCampo);
                 }
             }
@@ -31,17 +29,18 @@ class Validacao
         return $validacao;
     }
 
-    private function unique($table, $campo, $valor){
-        if(strlen($table) == 0){
-            return ;
+    private function unique($table, $campo, $valor)
+    {
+        if (strlen($table) == 0) {
+            return;
         }
         $db = new Database(config('database'));
 
         $resultado = $db->query("SELECT * FROM $table WHERE $campo = :valor",
-        params:['valor' => $valor]
+            params: ['valor' => $valor]
         )->fetch();
 
-        if($resultado){
+        if ($resultado) {
             $this->addError($campo, "O $campo já está sendo usado.");
         }
     }
@@ -67,34 +66,40 @@ class Validacao
         }
     }
 
-    private function min($min, $campo, $valor){
-        if(strlen($valor) <= $min){
+    private function min($min, $campo, $valor)
+    {
+        if (strlen($valor) <= $min) {
             $this->addError($campo, "O $campo precisa ter no minimo $min caracteres");
         }
     }
 
-    private function max($max, $campo, $valor){
-        if(strlen($valor) > $max){
+    private function max($max, $campo, $valor)
+    {
+        if (strlen($valor) > $max) {
             $this->addError($campo, "O $campo precisa ter no maximo $max caracteres");
         }
     }
 
-    private function strong($campo, $valor){
-        if(!strpbrk($valor, '!@#$%¨&*()')){
+    private function strong($campo, $valor)
+    {
+        if (! strpbrk($valor, '!@#$%¨&*()')) {
             $this->addError($campo, "O $campo precisa ter um caractere especial nele");
         }
     }
 
-    private function addError($campo, $erro){
+    private function addError($campo, $erro)
+    {
         $this->validacoes[$campo][] = $erro;
     }
 
-    public function naoPassou($nomeCustomizado = null){
+    public function naoPassou($nomeCustomizado = null)
+    {
         $chave = 'validacoes';
-        if($nomeCustomizado){
-            $chave .= '_'. $nomeCustomizado;
+        if ($nomeCustomizado) {
+            $chave .= '_'.$nomeCustomizado;
         }
         flash()->push($chave, $this->validacoes);
-        return sizeof($this->validacoes)  > 0;
+
+        return count($this->validacoes) > 0;
     }
 }

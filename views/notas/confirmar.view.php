@@ -9,11 +9,11 @@ $validacoes = flash()->get('validacoes');
             <input type="password" name="senha" placeholder="Senha"
                 class="input input-bordered w-full" />
                 <span>Senha</span>
-            <?php if (isset($validacoes['senha'])): ?>
+            <?php if (isset($validacoes['senha'])) { ?>
                 <div class="label text-error text-xs">
                     <?= $validacoes['senha'][0] ?>
                 </div>
-            <?php endif; ?>
+            <?php } ?>
         </label>
         <button class="btn btn-secondary">Abrir minhas notas</button>
     </form>

@@ -1,10 +1,11 @@
 <?php
 
-    namespace App\Controllers;
+namespace App\Controllers;
 
-    class IndexController{
-
-        public function __invoke(){
-            return view('index', template: 'guest');
-        }
+class IndexController
+{
+    public function __invoke()
+    {
+        return view('index', template: 'guest');
     }
+}

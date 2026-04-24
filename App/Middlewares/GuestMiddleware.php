@@ -1,13 +1,13 @@
 <?php
 
-    namespace App\Middlewares;
+namespace App\Middlewares;
 
-    class GuestMiddleware {
-
-        public function handle(){
-            if(auth()){
-                return redirect('/notas');
-            }
+class GuestMiddleware
+{
+    public function handle()
+    {
+        if (auth()) {
+            return redirect('/notas');
         }
-
     }
+}

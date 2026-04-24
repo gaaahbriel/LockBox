@@ -1,13 +1,13 @@
 <?php
 
-    namespace App\Middlewares;
+namespace App\Middlewares;
 
-    class AuthMiddleware {
-
-        public function handle(){
-            if(!auth()){
-                return redirect('/login');
-            }
+class AuthMiddleware
+{
+    public function handle()
+    {
+        if (! auth()) {
+            return redirect('/login');
         }
-
     }
+}

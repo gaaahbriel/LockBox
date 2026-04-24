@@ -6,7 +6,6 @@
             "email": "gabriel.bonfim111@gmail.com"
         }
     ],
-    "require": {},
     "autoload": {
         "psr-4":{
             "Core\\": "Core/",
@@ -15,5 +14,8 @@
     "files" : [
         "./Core/functions.php"
     ]
+    },
+    "require-dev": {
+        "laravel/pint": "^1.29"
     }
 }

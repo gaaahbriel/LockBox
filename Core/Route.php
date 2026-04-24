@@ -4,7 +4,6 @@ namespace Core;
 
 class Route
 {
-
     public $routes = [];
 
     public function addRoute($httpMethod, $uri, $controller, $middleware = null)
@@ -13,7 +12,7 @@ class Route
             $data = [
                 'class' => $controller,
                 'method' => '__invoke',
-                'middleware' => $middleware
+                'middleware' => $middleware,
             ];
         }
 
@@ -21,7 +20,7 @@ class Route
             $data = [
                 'class' => $controller[0],
                 'method' => $controller[1],
-                'middleware' => $middleware
+                'middleware' => $middleware,
             ];
         }
 
@@ -49,7 +48,7 @@ class Route
         return $this;
     }
 
-        public function delete($uri, $controller, $middleware = null)
+    public function delete($uri, $controller, $middleware = null)
     {
         $this->addRoute('DELETE', $uri, $controller, $middleware);
 
@@ -61,7 +60,7 @@ class Route
         $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
         $httpMethod = request()->post('__method', $_SERVER['REQUEST_METHOD']);
 
-        if (!isset($this->routes[$httpMethod][$uri])) {
+        if (! isset($this->routes[$httpMethod][$uri])) {
             abort(404);
         }
         $routeinfo = $this->routes[$httpMethod][$uri];
@@ -74,7 +73,6 @@ class Route
             $m = new $middleware;
             $m->handle();
         }
-
 
         $c = new $class;
         $c->$method();

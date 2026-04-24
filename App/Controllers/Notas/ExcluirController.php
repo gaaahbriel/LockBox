@@ -2,16 +2,15 @@
 
 namespace App\Controllers\Notas;
 
-use Core\Database;
-use Core\Validacao;
 use App\Models\Nota;
+use Core\Validacao;
 
 class ExcluirController
 {
     public function __invoke()
     {
         $validacao = Validacao::validar([
-            'id' => ['required']
+            'id' => ['required'],
         ], request()->all());
 
         if ($validacao->naoPassou()) {

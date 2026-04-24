@@ -7,11 +7,11 @@ return [
         'port' => 3306,
         'dbname' => 'lockbox',
         'user' => 'root',
-        'pass' => ''
+        'pass' => '',
     ],
 
     'security' => [
         'first_key' => env('ENCRYPT_FIRST_KEY', base64_encode(random_bytes(32))),
-        'second_key' => env('ENCRYPT_SECOND_KEY', base64_decode(random_bytes(64)))
-    ]
+        'second_key' => env('ENCRYPT_SECOND_KEY', base64_decode(random_bytes(64))),
+    ],
 ];

@@ -14,22 +14,22 @@
             </div>
             <input type="text" name="titulo" class="input input-bordered w-full" />
         </label>
-        <?php if (isset($validacoes['titulo'])): ?>
+        <?php if (isset($validacoes['titulo'])) { ?>
             <div class="label text-error text-xs">
                 <?= $validacoes['titulo'][0] ?>
             </div>
-        <?php endif; ?>
+        <?php } ?>
         <label class="form-control">
             <div class="label">
                 <span class="label-text">Sua nota</span>
             </div>
             <textarea name="nota" class="textarea textarea-bordered h-24 w-full"></textarea>
         </label>
-        <?php if (isset($validacoes['nota'])): ?>
+        <?php if (isset($validacoes['nota'])) { ?>
             <div class="label text-error text-xs">
                 <?= $validacoes['email'][0] ?>
             </div>
-        <?php endif; ?>
+        <?php } ?>
         <div class="flex justify-end items-center">
             <button class="btn btn-error">SALVAR</button>
         </div>

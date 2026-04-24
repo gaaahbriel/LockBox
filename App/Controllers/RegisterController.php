@@ -7,7 +7,6 @@ use Core\Validacao;
 
 class RegisterController
 {
-
     public function index()
     {
         return view('registrar', template: 'guest');
@@ -18,7 +17,7 @@ class RegisterController
         $validacao = Validacao::validar([
             'nome' => ['required'],
             'email' => ['required', 'email', 'confirmed', 'unique:usuarios'],
-            'senha' => ['required', 'min:8', 'max:30', 'strong']
+            'senha' => ['required', 'min:8', 'max:30', 'strong'],
         ], request()->all());
 
         if ($validacao->naoPassou()) {
@@ -28,15 +27,16 @@ class RegisterController
         $database = new Database(config('database'));
 
         $database->query(
-            query: "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)",
+            query: 'INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)',
             params: [
                 'nome' => request()->post('nome'),
                 'email' => request()->post('email'),
-                'senha' => password_hash(request()->post('senha'), PASSWORD_BCRYPT)
+                'senha' => password_hash(request()->post('senha'), PASSWORD_BCRYPT),
             ]
         );
 
         flash()->push('mensagem', 'Registrado com sucesso!👍');
+
         return redirect('/login');
     }
 }

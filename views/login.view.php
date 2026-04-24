@@ -27,11 +27,11 @@
                             <input type="text" name="email"
                                 class="input input-bordered w-full max-w-xs bg-white border-gray-300"
                                 value="<?= old('email') ?>" />
-                            <?php if (isset($validacoes['email'])): ?>
+                            <?php if (isset($validacoes['email'])) { ?>
                                 <div class="label text-error text-xs">
                                     <?= $validacoes['email'][0] ?>
                                 </div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
                         <label class="form-control w-full max-w-xs text-black">
                             <div class="label">
@@ -39,11 +39,11 @@
                             </div>
                             <input type="password" name="senha"
                                 class="input input-bordered w-full max-w-xs bg-white border-gray-300" />
-                            <?php if (isset($validacoes['senha'])): ?>
+                            <?php if (isset($validacoes['senha'])) { ?>
                                 <div class="label text-error text-xs">
                                     <?= $validacoes['senha'][0] ?>
                                 </div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </label>
                         <div class="card-actions">
                             <button class="btn btn-primary btn-block">Login</button>
