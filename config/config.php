@@ -11,7 +11,7 @@ return [
     ],
 
     'security' => [
-        'first_key' => 'c2VjdXJlLWtleS1mb3ItZW5jcnlwdGlvbg==',
-        'second_key' => 'c2VjdXJlLWtlYS1mb3ItYXV0aGVudGljYXRpb24=c2VjdXJlLWtleS1mb3ItZW5jcnlwdGlvbg=='
+        'first_key' => env('ENCRYPT_FIRST_KEY', base64_encode(random_bytes(32))),
+        'second_key' => env('ENCRYPT_SECOND_KEY', base64_decode(random_bytes(64)))
     ]
 ];
