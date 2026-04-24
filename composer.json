@@ -1,0 +1,19 @@
+{
+    "name": "gabriel.bonfim/lock-box",
+    "authors": [
+        {
+            "name": "Gaaahbriel",
+            "email": "gabriel.bonfim111@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4":{
+            "Core\\": "Core/",
+            "App\\": "app/"
+        },
+    "files" : [
+        "./Core/functions.php"
+    ]
+    }
+}
