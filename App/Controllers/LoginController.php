@@ -27,15 +27,9 @@ class LoginController
             return view('login', template: 'guest');
         }
 
-        $database = new Database(config('database'));
+        $usuario = Usuario::loginUsuario($email);
 
-        $usuario = $database->query(
-            query: 'SELECT * FROM usuarios WHERE email = :email',
-            class: Usuario::class,
-            params: compact('email')
-        )->fetch();
-
-        if (! $usuario && ! password_verify($senha, $usuario->senha)) {
+        if (!$usuario && !password_verify($senha, $usuario->senha)) {
             flash()->push('validacoes', ['email' => ['Usuário ou senha estão incorretos!']]);
 
             return view('login', template: 'guest');

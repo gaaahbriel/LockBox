@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Core\Database;
 use Core\Validacao;
+use App\Models\Usuario;
 
 class RegisterController
 {
@@ -14,6 +15,10 @@ class RegisterController
 
     public function register()
     {
+        $nome = request()->post('nome');
+        $email = request()->post('email');
+        $senha = request()->post('senha');
+
         $validacao = Validacao::validar([
             'nome' => ['required'],
             'email' => ['required', 'email', 'confirmed', 'unique:usuarios'],
@@ -24,16 +29,7 @@ class RegisterController
             return view('registrar', template: 'guest');
         }
 
-        $database = new Database(config('database'));
-
-        $database->query(
-            query: 'INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)',
-            params: [
-                'nome' => request()->post('nome'),
-                'email' => request()->post('email'),
-                'senha' => password_hash(request()->post('senha'), PASSWORD_BCRYPT),
-            ]
-        );
+        Usuario::registraUsuario($nome, $email, $senha);
 
         flash()->push('mensagem', 'Registrado com sucesso!👍');
 
