@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Core\Database;
+use Carbon\Carbon;
+
+
 
 class Nota
 {
@@ -17,6 +20,14 @@ class Nota
     public $data_criacao;
 
     public $data_atualizacao;
+
+    public function dataCriacao(){
+        return Carbon::parse($this->data_criacao);
+    }
+
+    public function dataAtualizacao(){
+        return Carbon::parse($this->data_atualizacao);
+    }
 
     public function nota()
     {

@@ -15,6 +15,8 @@ class IndexController
             return view('notas/nao-encontrada');
         }
 
+
+
         return view('notas/index', [
             'notas' => $notas,
             'notaSelecionada' => $notaSelecionada,

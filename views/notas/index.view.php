@@ -8,6 +8,8 @@
                     <?php if ($key == 0) { ?>rounded-tl-box<?php } ?>
                     <?php if ($nota->id == $notaSelecionada->id) { ?>bg-base-200 <?php } ?>">
                     <?= $nota->titulo ?>
+                    <span class="text-xs text-gray-500 block">id: <?= $nota->id ?> || criado:
+                        <?= $nota->dataAtualizacao()->timezone('America/Sao_Paulo')->locale('pt_BR')->diffForHumans() ?>
                 </a>
             <?php } ?>
         </div>
