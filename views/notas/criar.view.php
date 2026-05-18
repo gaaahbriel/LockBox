@@ -27,7 +27,7 @@
         </label>
         <?php if (isset($validacoes['nota'])) { ?>
             <div class="label text-error text-xs">
-                <?= $validacoes['email'][0] ?>
+                <?= $validacoes['nota'][0] ?>
             </div>
         <?php } ?>
         <div class="flex justify-end items-center">
